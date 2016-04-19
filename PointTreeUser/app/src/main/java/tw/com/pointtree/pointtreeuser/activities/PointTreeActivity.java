@@ -15,6 +15,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import tw.com.pointtree.pointtreeuser.R;
+import tw.com.pointtree.pointtreeuser.fragments.CardCollectionFragment;
+import tw.com.pointtree.pointtreeuser.fragments.OverviewFragment;
+import tw.com.pointtree.pointtreeuser.fragments.SettingFragment;
+import tw.com.pointtree.pointtreeuser.fragments.TitledFragment;
 import tw.com.pointtree.pointtreeuser.views.TabLayout;
 
 public class PointTreeActivity extends AppCompatActivity {
@@ -103,6 +107,14 @@ public class PointTreeActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
+            switch (position) {
+                case 0:
+                    return OverviewFragment.newInstance();
+                case 1:
+                    return CardCollectionFragment.newInstance();
+                case 4:
+                    return SettingFragment.newInstance();
+            }
             return PlaceholderFragment.newInstance(position + 1);
         }
 
