@@ -1,4 +1,4 @@
-package tw.com.pointtree.pointtreeuser.Models;
+package tw.com.pointtree.pointtreeuser.models;
 
 public class User {
 }
