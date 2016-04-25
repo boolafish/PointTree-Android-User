@@ -1,13 +1,16 @@
 package tw.com.pointtree.pointtreeuser.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import tw.com.pointtree.pointtreeuser.R;
+import tw.com.pointtree.pointtreeuser.activities.SearchActivity;
 
 public class CardCollectionFragment extends TitledFragment {
     public CardCollectionFragment() {
@@ -53,5 +56,18 @@ public class CardCollectionFragment extends TitledFragment {
     @Override
     public void onDetach() {
         super.onDetach();
+    }
+
+    @Override
+    public void onViewCreated(final View view, final Bundle savedInstanceState) {
+        EditText searchText = (EditText) view.findViewById(R.id.search_bar);
+
+        searchText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), SearchActivity.class);
+                getActivity().startActivity(intent);
+            }
+        });
     }
 }
