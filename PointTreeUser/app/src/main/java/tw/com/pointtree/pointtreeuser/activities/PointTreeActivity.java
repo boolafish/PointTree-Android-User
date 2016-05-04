@@ -21,6 +21,7 @@ import tw.com.pointtree.pointtreeuser.fragments.SettingFragment;
 import tw.com.pointtree.pointtreeuser.views.TabLayout;
 
 public class PointTreeActivity extends AppCompatActivity {
+    public final static String EXTRA_USER = "tw.com.pointtree.pointtreeuser.USER";
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
