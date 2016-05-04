@@ -8,8 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import tw.com.pointtree.pointtreeuser.R;
+import tw.com.pointtree.pointtreeuser.models.User;
 
 public class SettingFragment extends TitledFragment {
+    private static final String ARG_USER = "user";
+
+    private User currentUser;
+
     public SettingFragment() {
         // Required empty public constructor
     }
@@ -19,10 +24,12 @@ public class SettingFragment extends TitledFragment {
      * this fragment using the provided parameters.
      *
      * @return A new instance of fragment SettingFragment.
+     * @param currentUser The logged in user.
      */
-    public static SettingFragment newInstance() {
+    public static SettingFragment newInstance(User currentUser) {
         SettingFragment fragment = new SettingFragment();
         Bundle args = new Bundle();
+        args.putParcelable(ARG_USER, currentUser);
         fragment.setArguments(args);
         return fragment;
     }
@@ -30,6 +37,9 @@ public class SettingFragment extends TitledFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            currentUser = getArguments().getParcelable(ARG_USER);
+        }
     }
 
     @NonNull
