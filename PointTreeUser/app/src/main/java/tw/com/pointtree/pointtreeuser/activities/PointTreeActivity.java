@@ -18,10 +18,13 @@ import tw.com.pointtree.pointtreeuser.R;
 import tw.com.pointtree.pointtreeuser.fragments.CardCollectionFragment;
 import tw.com.pointtree.pointtreeuser.fragments.OverviewFragment;
 import tw.com.pointtree.pointtreeuser.fragments.SettingFragment;
+import tw.com.pointtree.pointtreeuser.models.User;
 import tw.com.pointtree.pointtreeuser.views.TabLayout;
 
 public class PointTreeActivity extends AppCompatActivity {
     public final static String EXTRA_USER = "tw.com.pointtree.pointtreeuser.USER";
+
+    private User currentUser;
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -42,6 +45,8 @@ public class PointTreeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        currentUser = getIntent().getParcelableExtra(EXTRA_USER);
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -113,7 +118,7 @@ public class PointTreeActivity extends AppCompatActivity {
                 case 1:
                     return CardCollectionFragment.newInstance();
                 case 4:
-                    return SettingFragment.newInstance();
+                    return SettingFragment.newInstance(currentUser);
             }
             return PlaceholderFragment.newInstance(position + 1);
         }
