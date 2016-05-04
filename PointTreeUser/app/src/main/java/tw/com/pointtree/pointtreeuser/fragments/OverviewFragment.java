@@ -66,7 +66,7 @@ public class OverviewFragment extends TitledFragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), SearchActivity.class);
-                getActivity().startActivity(intent);
+                startActivity(intent);
             }
         });
     }
