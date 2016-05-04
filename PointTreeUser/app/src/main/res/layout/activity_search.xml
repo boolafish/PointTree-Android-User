@@ -6,9 +6,21 @@
     android:orientation="vertical"
     tools:context="tw.com.pointtree.pointtreeuser.activities.SearchActivity">
 
-    <fragment android:name="tw.com.pointtree.pointtreeuser.fragments.SearchFragment"
-        android:id="@+id/fragment_container"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/search_bar"
+            style="@style/AppTheme.SearchBarActive" />
+    </LinearLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/search_list"/>
 
 </LinearLayout>

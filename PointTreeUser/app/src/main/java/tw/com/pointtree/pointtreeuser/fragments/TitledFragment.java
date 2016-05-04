@@ -38,9 +38,9 @@ public abstract class TitledFragment extends Fragment {
     @Override
     final public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                    Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_titled, container, false);
+        View view = inflater.inflate(R.layout.title_bar_layout, container, false);
 
-        TextView fragmentTitleView = (TextView) view.findViewById(R.id.fragment_title);
+        TextView fragmentTitleView = (TextView) view.findViewById(R.id.title_text_view);
         fragmentTitleView.setText(fragmentTitle);
 
         FrameLayout contentContainer = (FrameLayout) view.findViewById(R.id.content_container);
