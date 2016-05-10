@@ -7,9 +7,11 @@ import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 
 import tw.com.pointtree.pointtreeuser.R;
+import tw.com.pointtree.pointtreeuser.activities.CardDetailActivity;
 import tw.com.pointtree.pointtreeuser.activities.SearchActivity;
 
 public class CardCollectionFragment extends TitledFragment {
@@ -61,12 +63,22 @@ public class CardCollectionFragment extends TitledFragment {
     @Override
     public void onViewCreated(final View view, final Bundle savedInstanceState) {
         EditText searchText = (EditText) view.findViewById(R.id.search_bar);
+        Button tempButton = (Button) view.findViewById(R.id.temp_button);
 
         searchText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), SearchActivity.class);
-                getActivity().startActivity(intent);
+                startActivity(intent);
+            }
+        });
+
+        // TODO: should remove this in the future
+        tempButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), CardDetailActivity.class);
+                startActivity(intent);
             }
         });
     }

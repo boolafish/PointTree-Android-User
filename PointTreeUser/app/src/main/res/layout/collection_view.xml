@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/collection_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/card_detail_horizontal_padding"
+    android:paddingRight="@dimen/card_detail_horizontal_padding"
+    android:numColumns="5"
+    android:horizontalSpacing="@dimen/card_detail_grid_spacing"
+    android:verticalSpacing="@dimen/card_detail_grid_spacing"
+    android:stretchMode="columnWidth"
+    android:gravity="center" />
