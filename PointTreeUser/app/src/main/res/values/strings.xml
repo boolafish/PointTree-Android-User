@@ -5,8 +5,18 @@
     <string name="section_format">Hello World from section: %1$d</string>
 
     <!-- Search bar related -->
-    <string name="title_activity_search">SearchActivity</string>
     <string name="search_hint">搜尋集點卡或店家</string>
+    <string name="title_activity_search">SearchActivity</string>
+
+    <!-- Card detail related -->
+    <string name="card_info">集點卡資訊</string>
+    <string name="event_description">活動說明：</string>
+    <string name="store_info">商店資訊</string>
+    <string name="send_friends">送點數給朋友</string>
+    <string name="title_activity_card_detail">CardDetailActivity</string>
+    <string name="redeem_item">兌換飲料</string>
+    <string name="redemption_period">兌換期限：</string>
+    <string name="redemption_period_to"> - </string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

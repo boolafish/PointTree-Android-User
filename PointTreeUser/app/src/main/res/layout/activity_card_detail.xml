@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="tw.com.pointtree.pointtreeuser.activities.CardDetailActivity">
+
+    <tw.com.pointtree.pointtreeuser.views.SegmentControlLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/segment_control_group"
+        android:padding="@dimen/segment_control_padding">
+
+        <view class="tw.com.pointtree.pointtreeuser.views.SegmentControlLayout$SegmentControl"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/segment_control_height"
+            android:id="@+id/card_info"
+            android:text="@string/card_info"
+            style="@style/AppTheme.SegmentControl" />
+
+        <view class="tw.com.pointtree.pointtreeuser.views.SegmentControlLayout$SegmentControl"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/segment_control_height"
+            android:id="@+id/store_info"
+            android:text="@string/store_info"
+            style="@style/AppTheme.SegmentControl" />
+    </tw.com.pointtree.pointtreeuser.views.SegmentControlLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/fragment_container"
+        android:orientation="vertical" />
+
+</LinearLayout>

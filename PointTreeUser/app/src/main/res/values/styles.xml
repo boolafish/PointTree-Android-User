@@ -40,4 +40,37 @@
     <style name="AppTheme.SearchBarActive" parent="AppTheme.SearchBar">
         <item name="android:imeOptions">actionGo</item>
     </style>
+
+    <style name="AppTheme.SegmentControl">
+        <item name="android:textColor">@drawable/segment_control_text_color</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/segment_control_style</item>
+    </style>
+
+    <style name="AppTheme.CardDetailStoreTitle">
+        <item name="android:paddingStart">18dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="AppTheme.CardDetailInfoText">
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:lineSpacingExtra">5dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <!-- TODO: should support device that API level is below 21 -->
+    <style name="AppTheme.ButtonWithShadow">
+        <item name="android:layout_width">165dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_margin">15dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:stateListAnimator">@drawable/shadow_button</item>
+        <item name="android:background">@drawable/rounded_button</item>
+    </style>
 </resources>

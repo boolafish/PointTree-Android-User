@@ -23,6 +23,10 @@
             android:name=".activities.SearchActivity"
             android:label="@string/title_activity_search"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.CardDetailActivity"
+            android:label="@string/title_activity_card_detail"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
