@@ -31,4 +31,13 @@
 
     <string name="login_button_text">Login</string>
     <string name="register_button_text">Register</string>
+
+    <!--Setting Fragment-->
+    <string name="account_setting">帳號設定</string>
+    <string name="about_us">關於我們</string>
+    <string name="logout">登出</string>
+    <string name="notification">通知</string>
+    <string name="point_record">點數紀錄</string>
+    <string name="privacy_rule">隱私權法規</string>
+    <string name="problem_report">問題回報</string>
 </resources>
