@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="tw.com.pointtree.pointtreeuser.activities.SendPointActivity">
+
+    <tw.com.pointtree.pointtreeuser.views.PagerContainer
+        android:id="@+id/pager_container"
+        android:paddingTop="30dp"
+        android:paddingBottom="60dp"
+        android:background="@color/colorCardContainerBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <tw.com.pointtree.pointtreeuser.views.NonSwipeViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_gravity="center_horizontal" />
+    </tw.com.pointtree.pointtreeuser.views.PagerContainer>
+</LinearLayout>

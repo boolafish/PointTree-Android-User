@@ -10,7 +10,6 @@
 
     <!-- Overview related -->
     <string name="collect_point">QRcode 集點數</string>
-    <string name="title_activity_send_point_start">SendPointStartActivity</string>
 
     <!-- Card detail related -->
     <string name="card_info">集點卡資訊</string>
@@ -22,9 +21,23 @@
     <string name="redeem_item">兌換飲料</string>
     <string name="redemption_period">兌換期限：</string>
 
-    <!-- Send point choosing friend related -->
+    <!-- User query related -->
     <string name="enter_friend_id">請輸入朋友 ID</string>
     <string name="enter_friend_mobile_number">請輸入朋友的電話號碼</string>
+    <string name="title_activity_user_query">UserQueryActivity</string>
+
+    <!-- Send point related -->
+    <string name="available_point">可選擇點數</string>
+    <string name="choose_store">請選擇點數店家</string>
+    <string name="confirm">確認</string>
+    <string name="confirm_and_send">確認送出</string>
+    <string name="current_store">目前店家</string>
+    <string name="title_activity_send_point">SendPointActivity</string>
+    <string name="not_this_user">不是這位朋友</string>
+    <string name="please_select">請選擇</string>
+    <string name="select_point">請選擇要送出的點數量</string>
+    <string name="send_to_this_user">要將點數送給這位朋友嗎？</string>
+    <string name="sending_point_number">送出的點數量</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
