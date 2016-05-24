@@ -7,10 +7,12 @@ import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 
 import tw.com.pointtree.pointtreeuser.R;
 import tw.com.pointtree.pointtreeuser.activities.SearchActivity;
+import tw.com.pointtree.pointtreeuser.activities.UserQueryActivity;
 
 public class OverviewFragment extends TitledFragment {
     public OverviewFragment() {
@@ -61,11 +63,20 @@ public class OverviewFragment extends TitledFragment {
     @Override
     public void onViewCreated(final View view, final Bundle savedInstanceState) {
         EditText searchText = (EditText) view.findViewById(R.id.search_bar);
+        Button sendPointButton = (Button) view.findViewById(R.id.send_button);
 
         searchText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), SearchActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        sendPointButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), UserQueryActivity.class);
                 startActivity(intent);
             }
         });
