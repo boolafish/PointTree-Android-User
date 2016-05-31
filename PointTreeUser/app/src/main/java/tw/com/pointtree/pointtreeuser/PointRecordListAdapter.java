@@ -1,21 +1,10 @@
 package tw.com.pointtree.pointtreeuser;
 
 import android.content.Context;
-import android.support.v4.content.ContextCompat;
-import android.text.SpannableStringBuilder;
-import android.text.Spanned;
-import android.text.TextPaint;
-import android.text.method.LinkMovementMethod;
-import android.text.style.ClickableSpan;
-import android.text.style.ForegroundColorSpan;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.TextView;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -67,6 +56,11 @@ public class PointRecordListAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         PointRecordView pointRecordView;
+
+        if (transactions.size() == 0) {
+            // TODO handle empty transactions
+            return null;
+        }
 
         if (view == null) {
             pointRecordView = new PointRecordView(context, currentUser);

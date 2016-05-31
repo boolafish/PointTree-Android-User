@@ -12,8 +12,7 @@
         android:id="@+id/dateTextView"
         android:gravity="center_vertical"
         android:paddingLeft="15dp"
-        android:background="@color/paleGrey"
-        android:visibility="gone"/>
+        android:background="@color/paleGrey" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -35,7 +34,6 @@
             android:id="@+id/amountTextView"
             android:layout_weight="1"
             android:layout_marginLeft="15dp"
-            android:textSize="18dp"
             android:minWidth="80dp"
             android:layout_gravity="center_vertical" />
 
@@ -45,8 +43,7 @@
             android:text="New Text"
             android:id="@+id/recordTextView"
             android:layout_weight="9"
-            android:layout_marginLeft="5dp"
-            android:textSize="18dp" />
+            android:layout_marginLeft="5dp" />
     </LinearLayout>
 
 </LinearLayout>

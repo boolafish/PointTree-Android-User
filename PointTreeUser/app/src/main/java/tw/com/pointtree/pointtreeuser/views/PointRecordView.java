@@ -84,7 +84,7 @@ public class PointRecordView extends LinearLayout {
             amountString.append("+").append(Integer.toString(transaction.getAmount())).append("點");
             amountTextView.setTextColor(ContextCompat.getColor(context, R.color.tealish));
         } else {
-            amountString.append("-").append(Integer.toString(transaction.getAmount())).append("點");
+            amountString.append("−").append(Integer.toString(transaction.getAmount())).append("點");
             amountTextView.setTextColor(ContextCompat.getColor(context, R.color.warmPink));
         }
         amountTextView.setText(amountString.toString());
