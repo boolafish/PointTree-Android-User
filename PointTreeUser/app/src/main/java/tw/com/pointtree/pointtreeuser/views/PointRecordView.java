@@ -18,8 +18,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import tw.com.pointtree.pointtreeuser.R;
-import tw.com.pointtree.pointtreeuser.models.Transaction;
-import tw.com.pointtree.pointtreeuser.models.User;
+import tw.com.pointtree.pointtreeuser.api.models.Transaction;
+import tw.com.pointtree.pointtreeuser.api.models.User;
 
 public class PointRecordView extends LinearLayout {
     private TextView dateTextView;
@@ -132,7 +132,7 @@ public class PointRecordView extends LinearLayout {
         return sb;
     }
 
-    private ClickableSpan getUserClickableSpan(final User user) {
+    private ClickableSpan getUserClickableSpan(final Transaction.SimpleUserData user) {
         ClickableSpan cs = new ClickableSpan() {
             @Override
             public void onClick(View view) {

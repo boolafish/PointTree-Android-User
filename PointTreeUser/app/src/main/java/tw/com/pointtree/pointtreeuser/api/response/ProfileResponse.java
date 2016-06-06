@@ -7,4 +7,8 @@ import tw.com.pointtree.pointtreeuser.api.models.User;
 public class ProfileResponse {
     @SerializedName("data")
     private User user;
+
+    public User getUser() {
+        return user;
+    }
 }

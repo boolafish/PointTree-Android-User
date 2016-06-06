@@ -11,8 +11,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 
-import tw.com.pointtree.pointtreeuser.models.Transaction;
-import tw.com.pointtree.pointtreeuser.models.User;
+import tw.com.pointtree.pointtreeuser.api.models.Transaction;
+import tw.com.pointtree.pointtreeuser.api.models.User;
 import tw.com.pointtree.pointtreeuser.views.PointRecordView;
 
 public class PointRecordListAdapter extends BaseAdapter {

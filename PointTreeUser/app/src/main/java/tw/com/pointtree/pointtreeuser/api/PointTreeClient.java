@@ -21,6 +21,7 @@ public interface PointTreeClient {
             @Field("password") String password
     );
 
+    @FormUrlEncoded
     @POST("/api/v1/members")
     Call<RegisterResponse> register(
             @Field("mobile_number") String mobileNumber,
@@ -32,6 +33,7 @@ public interface PointTreeClient {
             @Path("user_id") String userId
     );
 
+    @FormUrlEncoded
     @POST("/api/v1/members/{user_id}/profile")
     Call<ProfileResponse> updateProfile(
             @Path("user_id") String userId,
@@ -49,6 +51,7 @@ public interface PointTreeClient {
             @Path("user_id") String userId
     );
 
+    @FormUrlEncoded
     @POST("/api/v1/points/{point_id}/transfer")
     Call<Transaction> transferPoint(
             @Path("point_id") String pointId,
