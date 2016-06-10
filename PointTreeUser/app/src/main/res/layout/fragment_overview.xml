@@ -1,4 +1,4 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -16,4 +16,31 @@
             style="@style/AppTheme.SearchBarInactive" />
     </LinearLayout>
 
-</FrameLayout>
+    <!-- TODO: should add different resolution image -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingBottom="@dimen/overview_button_paddingBottom"
+        android:layout_alignParentBottom="true" >
+
+        <Button
+            android:id="@+id/redeem_button"
+            style="@style/AppTheme.ButtonWithShadow"
+            android:drawableStart="@drawable/collect_point"
+            android:paddingStart="@dimen/overview_button_padding"
+            android:paddingEnd="@dimen/overview_button_padding"
+            android:text="@string/collect_point"
+            android:textColor="@color/colorCardDetailPagerIndicator" />
+
+        <Button
+            android:id="@+id/send_button"
+            style="@style/AppTheme.ButtonWithShadow"
+            android:drawableStart="@drawable/send_friends"
+            android:paddingStart="@dimen/overview_button_padding"
+            android:paddingEnd="@dimen/overview_button_padding"
+            android:text="@string/send_friends"
+            android:textColor="@color/colorSegmentControl" />
+    </LinearLayout>
+</RelativeLayout>

@@ -7,4 +7,5 @@
     <color name="black">#030303</color>
     <color name="colorSegmentControl">#25ced1</color>
     <color name="colorCardDetailPagerIndicator">#f7567c</color>
+    <color name="colorTabLayoutDefaultText">#46ffffff</color>
 </resources>

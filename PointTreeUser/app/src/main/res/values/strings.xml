@@ -8,6 +8,10 @@
     <string name="search_hint">搜尋集點卡或店家</string>
     <string name="title_activity_search">SearchActivity</string>
 
+    <!-- Overview related -->
+    <string name="collect_point">QRcode 集點數</string>
+    <string name="title_activity_send_point_start">SendPointStartActivity</string>
+
     <!-- Card detail related -->
     <string name="card_info">集點卡資訊</string>
     <string name="event_description">活動說明：</string>
@@ -17,6 +21,10 @@
     <string name="redeem_item">兌換飲料</string>
     <string name="redemption_period">兌換期限：</string>
     <string name="redemption_period_to"> - </string>
+
+    <!-- Send point choosing friend related -->
+    <string name="enter_friend_id">請輸入朋友 ID</string>
+    <string name="enter_friend_mobile_number">請輸入朋友的電話號碼</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

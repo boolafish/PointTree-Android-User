@@ -73,4 +73,35 @@
         <item name="android:stateListAnimator">@drawable/shadow_button</item>
         <item name="android:background">@drawable/rounded_button</item>
     </style>
+
+    <style name="ChooseFriendTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">@color/white</item>
+        <item name="tabIndicatorHeight">4dp</item>
+        <item name="tabPaddingStart">6dp</item>
+        <item name="tabPaddingEnd">6dp</item>
+        <item name="tabBackground">@color/colorPrimary</item>
+        <item name="tabSelectedTextColor">@color/white</item>
+    </style>
+
+    <style name="ChooseFriendTabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorTabLayoutDefaultText</item>
+    </style>
+    
+    <style name="AppTheme.ChooseFriendMainText">
+        <item name="android:layout_marginTop">40dp</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="AppTheme.ChooseFriendEditText">
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_marginLeft">30dp</item>
+        <item name="android:layout_marginRight">30dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:background">@drawable/rounded_edittext</item>
+        <item name="android:imeOptions">actionGo</item>
+    </style>
 </resources>
