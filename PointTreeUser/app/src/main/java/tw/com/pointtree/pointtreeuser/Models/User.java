@@ -9,6 +9,9 @@ import org.json.JSONObject;
 import okhttp3.Response;
 
 public class User extends APIObject implements Parcelable {
+    public static final String TYPE_ADMIN = "admin";
+    public static final String TYPE_STORE = "store";
+    public static final String TYPE_NORMAL = "normal";
     private String id;
     private String name;
     private String type;
@@ -27,6 +30,15 @@ public class User extends APIObject implements Parcelable {
             return new User[size];
         }
     };
+
+    public User(String id, String name, String type, String mobileNumber, String imgUrl, String accessToken) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.mobileNumber = mobileNumber;
+        this.imgUrl = imgUrl;
+        this.accessToken = accessToken;
+    }
 
     public User(Parcel in) {
         id = in.readString();
@@ -91,5 +103,18 @@ public class User extends APIObject implements Parcelable {
         parcel.writeString(mobileNumber);
         parcel.writeString(imgUrl);
         parcel.writeString(accessToken);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        // TODO use real equal compare
+        if (obj != null && obj instanceof User) {
+            User anotherUser = (User) obj;
+            if (anotherUser.getName().equals(this.getName())) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
