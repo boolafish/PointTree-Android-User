@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import tw.com.pointtree.pointtreeuser.R;
 import tw.com.pointtree.pointtreeuser.activities.SendPointActivity;
+import tw.com.pointtree.pointtreeuser.api.models.User;
 
 public class UserIdQueryFragment extends Fragment {
 
@@ -50,9 +51,12 @@ public class UserIdQueryFragment extends Fragment {
             @Override
             public boolean onEditorAction(TextView textView, int action, KeyEvent keyEvent) {
                 if (action == EditorInfo.IME_ACTION_SEND) {
+                    // TODO: should call API to query user info with user id
+                    User user = User.getSampleUser();
+
                     Intent intent = new Intent(getActivity(), SendPointActivity.class);
+                    intent.putExtra("user", user);
                     startActivity(intent);
-                    return true;
                 }
                 return false;
             }

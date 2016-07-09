@@ -11,9 +11,9 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ClientGenerator {
-    private static final String API_HTTP_SCHEME = "http";
+    private static final String API_HTTP_SCHEME = "https";
     private static final String API_BASE_URL = "pointtree.com.tw";
-    private static final int API_PORT = 80;
+    private static final int API_PORT = 443;
 
     private static final OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder();
     private static final HttpUrl apiBaseUrl =

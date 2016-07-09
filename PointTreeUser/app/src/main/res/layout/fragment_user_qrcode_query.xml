@@ -5,6 +5,12 @@
     android:orientation="vertical"
     tools:context=".fragments.UserQRcodeQueryFragment">
 
-    <!-- TODO: should implement QRcode scanner -->
-
+    <!-- TODO: should change button style or add some description text? -->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:id="@+id/scan_qrcode"
+        android:text="@string/scan_qrcode_text"
+        style="@style/AppTheme.ConfirmButton" />
 </LinearLayout>

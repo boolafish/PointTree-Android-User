@@ -24,6 +24,7 @@
     <!-- User query related -->
     <string name="enter_friend_id">請輸入朋友 ID</string>
     <string name="enter_friend_mobile_number">請輸入朋友的電話號碼</string>
+    <string name="scan_qrcode_text">開始掃瞄</string>
     <string name="title_activity_user_query">UserQueryActivity</string>
 
     <!-- Send point related -->
@@ -73,4 +74,7 @@
     <string name="register_sex_hint">選擇性別</string>
     <string name="register_user_name_hint">您想顯示的暱稱</string>
     <string name="title_activity_register">RegisterActivity</string>
+
+    <!-- QRcode related -->
+    <string name="title_activity_qrcode">QRCodeActivity</string>
 </resources>
