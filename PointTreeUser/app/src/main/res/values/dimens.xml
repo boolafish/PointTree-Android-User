@@ -17,4 +17,6 @@
     <dimen name="card_detail_send_button_padding">15dp</dimen>
     <dimen name="segment_control_height">30dp</dimen>
     <dimen name="segment_control_padding">12dp</dimen>
+    <dimen name="store_info_image_height">180dp</dimen>
+    <dimen name="store_info_image_margin">20dp</dimen>
 </resources>

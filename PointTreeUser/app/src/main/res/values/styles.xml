@@ -104,4 +104,46 @@
         <item name="android:background">@drawable/rounded_edittext</item>
         <item name="android:imeOptions">actionGo</item>
     </style>
+
+    <style name="AppTheme.StoreInfoMenuButton">
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">20dp</item>
+        <item name="android:textColor">@color/colorMenuButton</item>
+        <item name="android:background">@drawable/menu_button</item>
+    </style>
+
+    <style name="AppTheme.StoreInfoContentLayout">
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">20dp</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="AppTheme.StoreInfoContentText">
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="AppTheme.StoreInfoContentIcon">
+        <item name="android:layout_width">25dp</item>
+        <item name="android:layout_height">25dp</item>
+        <item name="android:layout_marginRight">15dp</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+
+    <style name="AppTheme.StoreInfoPreference">
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:background">@drawable/store_preference</item>
+    </style>
 </resources>

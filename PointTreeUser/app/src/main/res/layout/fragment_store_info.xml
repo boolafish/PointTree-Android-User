@@ -5,10 +5,119 @@
     android:orientation="vertical"
     tools:context="tw.com.pointtree.pointtreeuser.fragments.StoreInfoFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!-- TODO: should replace all hardcoded string with real data -->
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="BBB" />
+        android:layout_height="match_parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:id="@+id/store_name"
+                    android:text="City Milk 城市首選 大安店"
+                    style="@style/AppTheme.CardDetailStoreTitle" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/menu_button"
+                    android:text="@string/store_menu"
+                    style="@style/AppTheme.StoreInfoMenuButton" />
+            </LinearLayout>
+
+            <!-- TODO: store default cover image should be changed -->
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/store_info_image_height"
+                android:layout_marginTop="@dimen/store_info_image_margin"
+                android:layout_marginBottom="@dimen/store_info_image_margin"
+                android:id="@+id/store_image"
+                android:scaleType="fitCenter"
+                android:src="@drawable/store_default" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/AppTheme.StoreInfoContentLayout">
+
+                    <ImageView
+                        android:src="@drawable/store_location"
+                        style="@style/AppTheme.StoreInfoContentIcon" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/store_location"
+                        android:text="台北市大安區大安路一段51巷21號之一"
+                        style="@style/AppTheme.StoreInfoContentText" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/AppTheme.StoreInfoContentLayout">
+
+                    <ImageView
+                        android:src="@drawable/store_business_hour"
+                        style="@style/AppTheme.StoreInfoContentIcon" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/store_weekdays_time"
+                            android:text="平日：10：30 - 22：30"
+                            style="@style/AppTheme.StoreInfoContentText" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/store_weekend_time"
+                            android:text="假日：11：30 - 22：30"
+                            style="@style/AppTheme.StoreInfoContentText" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/last_content_layout"
+                    style="@style/AppTheme.StoreInfoContentLayout">
+
+                    <ImageView
+                        android:src="@drawable/store_phone_number"
+                        style="@style/AppTheme.StoreInfoContentIcon" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/store_phone_number"
+                        android:autoLink="phone"
+                        android:text="02-27813232"
+                        android:textColorLink="@color/colorMenuButton"
+                        style="@style/AppTheme.StoreInfoContentText" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

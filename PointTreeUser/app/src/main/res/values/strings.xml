@@ -16,11 +16,11 @@
     <string name="card_info">集點卡資訊</string>
     <string name="event_description">活動說明：</string>
     <string name="store_info">商店資訊</string>
+    <string name="store_menu">Menu</string>
     <string name="send_friends">送點數給朋友</string>
     <string name="title_activity_card_detail">CardDetailActivity</string>
     <string name="redeem_item">兌換飲料</string>
     <string name="redemption_period">兌換期限：</string>
-    <string name="redemption_period_to"> - </string>
 
     <!-- Send point choosing friend related -->
     <string name="enter_friend_id">請輸入朋友 ID</string>

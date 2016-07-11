@@ -20,4 +20,6 @@
     <color name="tealish">#25Ced1</color>
     <color name="warmPink">#f7567c</color>
     <color name="white">#FFFFFF</color>
+    <color name="colorMenuButton">#0076ff</color>
+    <color name="colorStorePreference">#fde2a7</color>
 </resources>
