@@ -9,15 +9,30 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import tw.com.pointtree.pointtreeuser.R;
+import tw.com.pointtree.pointtreeuser.UserPreference;
+import tw.com.pointtree.pointtreeuser.activities.LoginActivity;
 import tw.com.pointtree.pointtreeuser.activities.QRcodeActivity;
 import tw.com.pointtree.pointtreeuser.activities.SearchActivity;
 import tw.com.pointtree.pointtreeuser.activities.UserQueryActivity;
 import tw.com.pointtree.pointtreeuser.api.models.User;
 
 public class OverviewFragment extends TitledFragment {
+    // TODO: should get these real data from server
+    private int treeType = 15;
+    private int treeLevel = 5;
+
     private User currentUser;
+    private UserPreference userPreference;
+
+    private EditText searchText;
+    private Button sendPointButton;
+    private Button redeemButton;
+    private TextView scoreText;
+    private ImageView treeImage;
 
     public OverviewFragment() {
         // Required empty public constructor
@@ -39,6 +54,17 @@ public class OverviewFragment extends TitledFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        userPreference = new UserPreference(getActivity());
+        String userToken = userPreference.getUserToken();
+        if (userToken == null) {
+            Intent intent = new Intent(getActivity(), LoginActivity.class);
+            startActivity(intent);
+        } else {
+            String userId = userPreference.getUserId();
+            String token = userPreference.getUserToken();
+            // fetch user tree API
+        }
     }
 
     @NonNull
@@ -66,9 +92,15 @@ public class OverviewFragment extends TitledFragment {
 
     @Override
     public void onViewCreated(final View view, final Bundle savedInstanceState) {
-        EditText searchText = (EditText) view.findViewById(R.id.search_bar);
-        Button sendPointButton = (Button) view.findViewById(R.id.send_button);
-        Button redeemButton = (Button) view.findViewById(R.id.redeem_button);
+        super.onViewCreated(view, savedInstanceState);
+
+        setOverviewView(view);
+
+        String fileName = "tree_type" + treeType + "_" + treeLevel;
+        // TODO: should show default error image if id is zero
+        // TODO: all tree images should have different resolution
+        int id = getResources().getIdentifier(fileName, "drawable", getContext().getPackageName());
+        treeImage.setImageResource(id);
 
         searchText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,5 +130,13 @@ public class OverviewFragment extends TitledFragment {
 
     public void setCurrentUser(User currentUser) {
         this.currentUser = currentUser;
+    }
+
+    private void setOverviewView(View view) {
+        searchText = (EditText) view.findViewById(R.id.search_bar);
+        sendPointButton = (Button) view.findViewById(R.id.send_button);
+        redeemButton = (Button) view.findViewById(R.id.redeem_button);
+        scoreText = (TextView) view.findViewById(R.id.score);
+        treeImage = (ImageView) view.findViewById(R.id.tree_type);
     }
 }

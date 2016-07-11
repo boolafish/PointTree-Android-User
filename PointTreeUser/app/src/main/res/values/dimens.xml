@@ -9,8 +9,11 @@
     <dimen name="appbar_padding_top">8dp</dimen>
 
     <!-- Overview related -->
-    <dimen name="overview_button_paddingBottom">20dp</dimen>
     <dimen name="overview_button_padding">15dp</dimen>
+    <dimen name="overview_tree_size">250dp</dimen>
+    <dimen name="overview_text_left_margin">40dp</dimen>
+    <dimen name="overview_label_top_margin">100dp</dimen>
+    <dimen name="overview_text_top_margin">20dp</dimen>
 
     <!-- Card detail related -->
     <dimen name="card_detail_button_paddingBottom">40dp</dimen>
