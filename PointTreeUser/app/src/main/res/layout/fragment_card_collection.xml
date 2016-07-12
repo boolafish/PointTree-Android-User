@@ -18,11 +18,10 @@
     </LinearLayout>
 
     <!-- TODO: should remove this in the future -->
-    <Button
+
+    <com.baoyz.swipemenulistview.SwipeMenuListView
+        android:id="@+id/card_collection_list_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/temp_button"
-        android:background="@color/colorPrimary"
-        android:text="Go To Collection Detail" />
+        android:layout_height="match_parent" />
 
 </LinearLayout>
