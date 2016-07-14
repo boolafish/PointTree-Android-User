@@ -2,7 +2,9 @@ package tw.com.pointtree.pointtreeuser.api.models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     @SerializedName("user_id")
     private String id;
     @SerializedName("name")
@@ -32,5 +34,16 @@ public class User {
 
     public String getImgUrl() {
         return imgUrl;
+    }
+
+    public static User getSampleUser() {
+        User user = new User();
+        user.id = "r04944037";
+        user.name = "阿堯隊長";
+        user.type = "normal";
+        user.mobileNumber = "0911111111";
+        user.imgUrl = "http://";
+
+        return user;
     }
 }

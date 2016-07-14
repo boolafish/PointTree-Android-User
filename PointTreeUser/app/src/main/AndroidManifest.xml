@@ -31,7 +31,11 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.UserQueryActivity"
-            android:label="@string/title_activity_send_point_start"
+            android:label="@string/title_activity_user_query"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.SendPointActivity"
+            android:label="@string/title_activity_send_point"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 

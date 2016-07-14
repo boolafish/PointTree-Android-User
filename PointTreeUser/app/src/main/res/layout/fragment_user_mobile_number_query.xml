@@ -12,7 +12,8 @@
         style="@style/AppTheme.ChooseFriendMainText" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/user_mobile_number"
         android:layout_width="match_parent"
+        android:inputType="numberSigned"
         style="@style/AppTheme.ChooseFriendEditText" />
 </LinearLayout>

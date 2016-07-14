@@ -33,10 +33,10 @@ public class UserQueryActivity extends TitledActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setSendPointView();
+        setUserQueryView();
     }
 
-    public void setSendPointView() {
+    public void setUserQueryView() {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText("QRcode"));
         tabLayout.addTab(tabLayout.newTab().setText("朋友 ID"));
