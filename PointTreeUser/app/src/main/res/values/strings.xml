@@ -45,6 +45,10 @@
     <string name="login_button_text">Login</string>
     <string name="register_button_text">Register</string>
 
+    <!--Card Collection Fragment-->
+    <string name="delete">刪除</string>
+    <string name="cancel_favorite">取消常用</string>
+
     <!--Setting Fragment-->
     <string name="account_setting">帳號設定</string>
     <string name="about_us">關於我們</string>

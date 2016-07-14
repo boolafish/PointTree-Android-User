@@ -18,7 +18,9 @@ import tw.com.pointtree.pointtreeuser.R;
 import tw.com.pointtree.pointtreeuser.fragments.CardCollectionFragment;
 import tw.com.pointtree.pointtreeuser.fragments.OverviewFragment;
 import tw.com.pointtree.pointtreeuser.fragments.SettingFragment;
+import tw.com.pointtree.pointtreeuser.fragments.SwipeableFragment;
 import tw.com.pointtree.pointtreeuser.models.User;
+import tw.com.pointtree.pointtreeuser.views.NonSwipeViewPager;
 import tw.com.pointtree.pointtreeuser.views.TabLayout;
 
 public class PointTreeActivity extends AppCompatActivity {
@@ -39,7 +41,7 @@ public class PointTreeActivity extends AppCompatActivity {
     /**
      * The {@link ViewPager} that will host the section contents.
      */
-    private ViewPager mViewPager;
+    private NonSwipeViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,11 +55,11 @@ public class PointTreeActivity extends AppCompatActivity {
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
         // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.container);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
+        viewPager = (NonSwipeViewPager) findViewById(R.id.container);
+        viewPager.setAdapter(mSectionsPagerAdapter);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(mViewPager);
+        tabLayout.setupWithViewPager(viewPager);
     }
 
     /**
@@ -96,7 +98,8 @@ public class PointTreeActivity extends AppCompatActivity {
     }
 
     public interface ImageTabAdapter {
-        @DrawableRes int getPageImage(int position);
+        @DrawableRes
+        int getPageImage(int position);
     }
 
     /**
