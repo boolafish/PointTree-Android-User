@@ -9,37 +9,29 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.IOException;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
-import tw.com.pointtree.pointtreeuser.APIClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import tw.com.pointtree.pointtreeuser.R;
-import tw.com.pointtree.pointtreeuser.models.APIObject;
-import tw.com.pointtree.pointtreeuser.models.User;
+import tw.com.pointtree.pointtreeuser.UserPreference;
+import tw.com.pointtree.pointtreeuser.api.ClientGenerator;
+import tw.com.pointtree.pointtreeuser.api.PointTreeClient;
+import tw.com.pointtree.pointtreeuser.api.response.LoginResponse;
+import tw.com.pointtree.pointtreeuser.api.response.RegisterResponse;
 
 public class LoginActivity extends AppCompatActivity {
+    private PointTreeClient apiClient = ClientGenerator.createService(PointTreeClient.class);
 
-    private Callback loginCallback = new Callback() {
+    private Callback<LoginResponse> loginCallback = new Callback<LoginResponse>() {
         @Override
-        public void onFailure(Call call, IOException e) {
-            // TODO: Implement this.
-        }
-
-        @Override
-        public void onResponse(Call call, Response response) throws IOException {
+        public void onResponse(Call<LoginResponse> call, final Response<LoginResponse> response) {
             if (response.isSuccessful()) {
-                try {
-                    User user = new User(response);
-                    Intent intent = new Intent(LoginActivity.this, PointTreeActivity.class);
-                    intent.putExtra(PointTreeActivity.EXTRA_USER, user);
-                    startActivity(intent);
-                    finish();
-                } catch (APIObject.APIObjectException e) {
-                    // TODO: Show error UI.
-                    e.printStackTrace();
-                }
+                UserPreference userPreference = new UserPreference(LoginActivity.this);
+                userPreference.setUserId(response.body().getUser().getId());
+                userPreference.setUserToken(response.body().getToken());
+                Intent intent = new Intent(LoginActivity.this, PointTreeActivity.class);
+                startActivity(intent);
+                finish();
             } else {
                 // TODO: Change failure UI.
                 runOnUiThread(new Runnable() {
@@ -52,38 +44,10 @@ public class LoginActivity extends AppCompatActivity {
                 });
             }
         }
-    };
 
-    private Callback registerCallback = new Callback() {
         @Override
-        public void onFailure(Call call, IOException e) {
+        public void onFailure(Call<LoginResponse> call, Throwable t) {
             // TODO: Implement this.
-        }
-
-        @Override
-        public void onResponse(Call call, Response response) throws IOException {
-            // TODO: Use other UI.
-            if (response.isSuccessful()) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast toast = Toast.makeText(LoginActivity.this, "Register succeed",
-                                Toast.LENGTH_SHORT);
-                        toast.show();
-                    }
-                });
-            } else {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast toast = Toast.makeText(LoginActivity.this, "Register failed",
-                                Toast.LENGTH_SHORT);
-                        toast.show();
-                    }
-                });
-                Log.d("", "onResponse: " + response.body().string());
-                response.body().close();
-            }
         }
     };
 
@@ -102,17 +66,24 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String mobileNumber = mobileNumberView.getText().toString();
                 String password = passwordView.getText().toString();
-                new APIClient().login(mobileNumber, password, loginCallback);
+                apiClient.login(mobileNumber, password).enqueue(loginCallback);
             }
         });
 
-        Button registerButton = (Button) findViewById(R.id.registerButton);
+        TextView registerButton = (TextView) findViewById(R.id.register);
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String mobileNumber = mobileNumberView.getText().toString();
-                String password = passwordView.getText().toString();
-                new APIClient().register(mobileNumber, password, registerCallback);
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        TextView forgetPassword = (TextView) findViewById(R.id.forgetPassword);
+        forgetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // TODO: forget password
             }
         });
     }

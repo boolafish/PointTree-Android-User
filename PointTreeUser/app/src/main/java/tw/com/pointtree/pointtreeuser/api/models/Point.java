@@ -12,6 +12,8 @@ public class Point {
     @SerializedName("img_url")
     private String imgUrl;
 
+    private Point() {}
+
     public String getId() {
         return id;
     }

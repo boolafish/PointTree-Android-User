@@ -1,32 +1,40 @@
 package tw.com.pointtree.pointtreeuser.activities;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.DrawableRes;
-import android.support.v7.app.AppCompatActivity;
-
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.widget.TextView;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import tw.com.pointtree.pointtreeuser.R;
+import tw.com.pointtree.pointtreeuser.UserPreference;
+import tw.com.pointtree.pointtreeuser.api.ClientGenerator;
+import tw.com.pointtree.pointtreeuser.api.PointTreeClient;
+import tw.com.pointtree.pointtreeuser.api.models.User;
+import tw.com.pointtree.pointtreeuser.api.response.ProfileResponse;
 import tw.com.pointtree.pointtreeuser.fragments.CardCollectionFragment;
 import tw.com.pointtree.pointtreeuser.fragments.OverviewFragment;
 import tw.com.pointtree.pointtreeuser.fragments.SettingFragment;
-import tw.com.pointtree.pointtreeuser.fragments.SwipeableFragment;
-import tw.com.pointtree.pointtreeuser.models.User;
 import tw.com.pointtree.pointtreeuser.views.NonSwipeViewPager;
 import tw.com.pointtree.pointtreeuser.views.TabLayout;
 
 public class PointTreeActivity extends AppCompatActivity {
-    public final static String EXTRA_USER = "tw.com.pointtree.pointtreeuser.USER";
-
     private User currentUser;
+    private UserPreference userPreference;
+
+    private OverviewFragment overviewFragment;
+    private CardCollectionFragment cardCollectionFragment;
+    private SettingFragment settingFragment;
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -47,8 +55,7 @@ public class PointTreeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        currentUser = getIntent().getParcelableExtra(EXTRA_USER);
+        userPreference = new UserPreference(this);
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -60,6 +67,43 @@ public class PointTreeActivity extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+
+        String userToken = userPreference.getUserToken();
+        if (userToken == null) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        } else {
+            String userId = userPreference.getUserId();
+            String token = userPreference.getUserToken();
+            fetchUserInfo(userId, token);
+        }
+    }
+
+    private void fetchUserInfo(String userId, String userToken) {
+        PointTreeClient client =
+                ClientGenerator.createAuthorizedService(PointTreeClient.class, userToken);
+        client.getProfile(userId).enqueue(new Callback<ProfileResponse>() {
+            @Override
+            public void onResponse(Call<ProfileResponse> call, Response<ProfileResponse> response) {
+                if (response.code() == 200) {
+                    currentUser = response.body().getUser();
+                    // TODO: How to notify all fragment that user info is fetched?
+                    if (settingFragment != null) {
+                        settingFragment.setCurrentUser(currentUser);
+                    }
+                } else if (response.code() == 401) {
+                    Intent intent = new Intent(PointTreeActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ProfileResponse> call, Throwable t) {
+                // TODO:
+            }
+        });
     }
 
     /**
@@ -114,16 +158,36 @@ public class PointTreeActivity extends AppCompatActivity {
         @Override
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
+            // Return a RegisterStep1Fragment (defined as a static inner class below).
             switch (position) {
                 case 0:
                     return OverviewFragment.newInstance();
                 case 1:
                     return CardCollectionFragment.newInstance();
                 case 4:
-                    return SettingFragment.newInstance(currentUser);
+                    return SettingFragment.newInstance();
             }
             return PlaceholderFragment.newInstance(position + 1);
+        }
+
+        /**
+         * Use instantiateItem to hook fragments to this activity.
+         */
+        @Override
+        public Object instantiateItem(ViewGroup container, int position) {
+            Fragment fragment = (Fragment) super.instantiateItem(container, position);
+            switch (position) {
+                case 0:
+                    overviewFragment = (OverviewFragment) fragment;
+                    break;
+                case 1:
+                    cardCollectionFragment = (CardCollectionFragment) fragment;
+                    break;
+                case 4:
+                    settingFragment = (SettingFragment) fragment;
+                    settingFragment.setCurrentUser(currentUser);
+            }
+            return fragment;
         }
 
         @Override

@@ -17,6 +17,12 @@
     <dimen name="card_detail_send_button_padding">15dp</dimen>
     <dimen name="segment_control_height">30dp</dimen>
     <dimen name="segment_control_padding">12dp</dimen>
+
     <dimen name="store_info_image_height">180dp</dimen>
     <dimen name="store_info_image_margin">20dp</dimen>
+
+    <!-- Login, Register activities -->
+    <dimen name="login_content_width">300dp</dimen>
+    <dimen name="register_content_width">400dp</dimen>
+    <dimen name="register_edit_text_height">40dp</dimen>
 </resources>
