@@ -26,7 +26,7 @@ public class UserMobileNumberQueryFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @return A new instance of fragment ChooseFriendWithMobileNumberFragment.
+     * @return A new instance of fragment UserMobileNumberQueryFragment.
      */
     public static UserMobileNumberQueryFragment newInstance() {
         UserMobileNumberQueryFragment fragment = new UserMobileNumberQueryFragment();

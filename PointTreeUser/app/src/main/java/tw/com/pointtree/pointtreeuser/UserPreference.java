@@ -34,7 +34,7 @@ public class UserPreference {
         return this.preferences.getString(USER_ID, null);
     }
 
-    public void setUserId(String userToken) {
-        this.preferences.edit().putString(USER_ID, userToken).apply();
+    public void setUserId(String userId) {
+        this.preferences.edit().putString(USER_ID, userId).apply();
     }
 }

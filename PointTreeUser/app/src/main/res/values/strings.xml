@@ -22,7 +22,7 @@
     <string name="redemption_period">兌換期限：</string>
 
     <!-- User query related -->
-    <string name="enter_friend_id">請輸入朋友 ID</string>
+    <string name="enter_friend_number">請輸入朋友編號</string>
     <string name="enter_friend_mobile_number">請輸入朋友的電話號碼</string>
     <string name="scan_qrcode_text">開始掃瞄</string>
     <string name="title_activity_user_query">UserQueryActivity</string>
@@ -77,4 +77,5 @@
 
     <!-- QRcode related -->
     <string name="title_activity_qrcode">QRCodeActivity</string>
+    <string name="qrcode_description">這是您帳號的QRcode，\n若要接受朋友贈送的點數，\n也是以此QRcode接收唷！</string>
 </resources>

@@ -14,8 +14,11 @@ import tw.com.pointtree.pointtreeuser.R;
 import tw.com.pointtree.pointtreeuser.activities.QRcodeActivity;
 import tw.com.pointtree.pointtreeuser.activities.SearchActivity;
 import tw.com.pointtree.pointtreeuser.activities.UserQueryActivity;
+import tw.com.pointtree.pointtreeuser.api.models.User;
 
 public class OverviewFragment extends TitledFragment {
+    private User currentUser;
+
     public OverviewFragment() {
         // Required empty public constructor
     }
@@ -87,8 +90,13 @@ public class OverviewFragment extends TitledFragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), QRcodeActivity.class);
+                intent.putExtra("user", currentUser);
                 startActivity(intent);
             }
         });
+    }
+
+    public void setCurrentUser(User currentUser) {
+        this.currentUser = currentUser;
     }
 }

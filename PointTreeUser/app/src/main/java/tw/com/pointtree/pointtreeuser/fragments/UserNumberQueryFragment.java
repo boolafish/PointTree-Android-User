@@ -16,9 +16,9 @@ import tw.com.pointtree.pointtreeuser.R;
 import tw.com.pointtree.pointtreeuser.activities.SendPointActivity;
 import tw.com.pointtree.pointtreeuser.api.models.User;
 
-public class UserIdQueryFragment extends Fragment {
+public class UserNumberQueryFragment extends Fragment {
 
-    public UserIdQueryFragment() {
+    public UserNumberQueryFragment() {
         // Required empty public constructor
     }
 
@@ -26,10 +26,10 @@ public class UserIdQueryFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @return A new instance of fragment ChooseFriendWithIdFragment.
+     * @return A new instance of fragment UserNumberQueryFragment.
      */
-    public static UserIdQueryFragment newInstance() {
-        UserIdQueryFragment fragment = new UserIdQueryFragment();
+    public static UserNumberQueryFragment newInstance() {
+        UserNumberQueryFragment fragment = new UserNumberQueryFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -39,19 +39,19 @@ public class UserIdQueryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user_id_query, container, false);
+        return inflater.inflate(R.layout.fragment_user_number_query, container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        EditText userId = (EditText) view.findViewById(R.id.user_id);
+        EditText userId = (EditText) view.findViewById(R.id.user_number);
         userId.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int action, KeyEvent keyEvent) {
                 if (action == EditorInfo.IME_ACTION_SEND) {
-                    // TODO: should call API to query user info with user id
+                    // TODO: should call API to query user info with user number
                     User user = User.getSampleUser();
 
                     Intent intent = new Intent(getActivity(), SendPointActivity.class);

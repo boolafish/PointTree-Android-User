@@ -27,7 +27,7 @@ public class UserQRcodeQueryFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @return A new instance of fragment ChooseFriendWithQRcode.
+     * @return A new instance of fragment UserQRcodeQueryFragment.
      */
     public static UserQRcodeQueryFragment newInstance() {
         UserQRcodeQueryFragment fragment = new UserQRcodeQueryFragment();
