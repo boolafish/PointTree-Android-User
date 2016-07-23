@@ -37,4 +37,8 @@ public class UserPreference {
     public void setUserId(String userId) {
         this.preferences.edit().putString(USER_ID, userId).apply();
     }
+
+    public void clearPreference() {
+        this.preferences.edit().clear().apply();
+    }
 }
