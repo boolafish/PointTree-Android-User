@@ -38,7 +38,7 @@ public class ClientGenerator {
             @Override
             public Response intercept(Chain chain) throws IOException {
                 Request request = chain.request().newBuilder()
-                        .addHeader("Authorization", "Token ".concat(token)).build();
+                        .header("Authorization", "Token ".concat(token)).build();
                 return chain.proceed(request);
             }
         }).build();
