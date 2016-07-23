@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/imageButton"
                 android:background="@drawable/edit_icon"
-                android:layout_marginLeft="3dp" />
+                android:layout_marginStart="3dp" />
         </LinearLayout>
 
         <TextView
@@ -87,8 +87,8 @@
             android:textColor="@color/white" />
 
         <Space
-            android:layout_width="20px"
-            android:layout_height="20px" />
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
 
         <Button
             android:layout_width="match_parent"
@@ -129,7 +129,7 @@
                 android:checked="false"
                 android:background="@color/white"
                 android:layout_marginTop="1dp"
-                android:paddingLeft="15dp" />
+                android:paddingStart="15dp" />
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -144,7 +144,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/about_us"
                     android:textColor="@android:color/black"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginStart="15dp"
                     android:layout_weight="9"
                     android:layout_gravity="center_vertical" />
 
@@ -169,7 +169,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/problem_report"
                     android:textColor="@android:color/black"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginStart="15dp"
                     android:layout_weight="9"
                     android:layout_gravity="center_vertical" />
 
@@ -194,7 +194,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/privacy_rule"
                     android:textColor="@android:color/black"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginStart="15dp"
                     android:layout_weight="9"
                     android:layout_gravity="center_vertical" />
 
@@ -219,7 +219,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/logout"
                     android:textColor="@android:color/black"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginStart="15dp"
                     android:layout_weight="9"
                     android:layout_gravity="center_vertical" />
 
