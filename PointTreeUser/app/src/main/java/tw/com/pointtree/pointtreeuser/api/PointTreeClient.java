@@ -7,6 +7,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import tw.com.pointtree.pointtreeuser.api.models.Transaction;
+import tw.com.pointtree.pointtreeuser.api.response.AuthResponse;
 import tw.com.pointtree.pointtreeuser.api.response.BalanceResponse;
 import tw.com.pointtree.pointtreeuser.api.response.LoginResponse;
 import tw.com.pointtree.pointtreeuser.api.response.ProfileResponse;
@@ -25,7 +26,10 @@ public interface PointTreeClient {
     @POST("/api/v1/members")
     Call<RegisterResponse> register(
             @Field("mobile_number") String mobileNumber,
-            @Field("password") String password
+            @Field("password") String password,
+            @Field("name") String name,
+            @Field("sex") String sex,
+            @Field("birthday") String birthday
     );
 
     @GET("/api/v1/members/{user_id}/profile")
@@ -57,5 +61,12 @@ public interface PointTreeClient {
             @Path("point_id") String pointId,
             @Field("amount") int amount,
             @Field("comment") String comment
+    );
+
+    @FormUrlEncoded
+    @POST("/api/v1/messages/{nonce}")
+    Call<AuthResponse> authorizeCode(
+            @Path("nonce") String nonce,
+            @Field("code") int code
     );
 }

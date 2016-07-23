@@ -1,12 +1,11 @@
 package tw.com.pointtree.pointtreeuser.activities;
 
-import android.support.v7.app.AppCompatActivity;
-
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,23 +27,19 @@ public class RegisterActivity extends AppCompatActivity {
     private SectionsPagerAdapter sectionsPagerAdapter;
     private NonSwipeViewPager viewPager;
     private PointTreeClient apiClient = ClientGenerator.createService(PointTreeClient.class);
+
     private String mobileNumber;
     private String password;
+    private String userName;
+    private String sex;
+    private String birthday;
 
     private Callback<RegisterResponse> registerCallback = new Callback<RegisterResponse>() {
         @Override
-        public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
-            // TODO: Use other UI.
+        public void onResponse(Call<RegisterResponse> call, final Response<RegisterResponse> response) {
             if (response.isSuccessful()) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast toast = Toast.makeText(RegisterActivity.this, "Register succeed",
-                                Toast.LENGTH_SHORT);
-                        toast.show();
-                        finish();
-                    }
-                });
+                String nonce = response.body().getNonce();
+                toPhoneAuthActivity(nonce);
             } else {
                 runOnUiThread(new Runnable() {
                     @Override
@@ -54,7 +49,6 @@ public class RegisterActivity extends AppCompatActivity {
                         toast.show();
                     }
                 });
-                Log.d("", "onResponse: " + response.body().toString());
             }
         }
 
@@ -91,8 +85,23 @@ public class RegisterActivity extends AppCompatActivity {
         viewPager.setCurrentItem(1);
     }
 
-    private void completeRegister() {
-        apiClient.register(mobileNumber, password).enqueue(registerCallback);
+    private void completeRegister(RegisterStep2Fragment srcFragment) {
+        userName = srcFragment.name.getText().toString();
+        birthday = srcFragment.birthday.getText().toString();
+        sex = "male";
+        apiClient.register(mobileNumber, password, userName, sex, birthday).enqueue(registerCallback);
+    }
+
+    private void toPhoneAuthActivity(String nonce) {
+        Intent intent = new Intent(this, PhoneAuthActivity.class);
+        intent.putExtra(PhoneAuthActivity.EXTRA_MOBILE_NUM, mobileNumber);
+        intent.putExtra(PhoneAuthActivity.EXTRA_PASSWORD, password);
+        intent.putExtra(PhoneAuthActivity.EXTRA_USER_NAME, userName);
+        intent.putExtra(PhoneAuthActivity.EXTRA_SEX, sex);
+        intent.putExtra(PhoneAuthActivity.EXTRA_BIRTHDAY, birthday);
+        intent.putExtra(PhoneAuthActivity.EXTRA_NONCE, nonce);
+        startActivity(intent);
+        finish();
     }
 
     public static class RegisterStep1Fragment extends Fragment {
@@ -160,6 +169,10 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public static class RegisterStep2Fragment extends Fragment {
+        private EditText name;
+        private EditText birthday;
+        private EditText sex;
+
         public RegisterStep2Fragment() {
         }
 
@@ -174,13 +187,17 @@ public class RegisterActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             final RegisterActivity registerActivity = (RegisterActivity) getActivity();
+
             View rootView = inflater.inflate(R.layout.fragment_register_step2, container, false);
+            name = (EditText) rootView.findViewById(R.id.user_name);
+            birthday = (EditText) rootView.findViewById(R.id.user_birthday);
+            // TODO: get user sex.
             Button register = (Button) rootView.findViewById(R.id.confirmRegister);
             register.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     // TODO: prevent double click.
-                    registerActivity.completeRegister();
+                    registerActivity.completeRegister(RegisterStep2Fragment.this);
                 }
             });
             return rootView;

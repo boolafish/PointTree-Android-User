@@ -78,4 +78,12 @@
     <!-- QRcode related -->
     <string name="title_activity_qrcode">QRCodeActivity</string>
     <string name="qrcode_description">這是您帳號的QRcode，\n若要接受朋友贈送的點數，\n也是以此QRcode接收唷！</string>
+
+    <!-- Phone Auth activity -->
+    <string name="auth_title">確定註冊</string>
+    <string name="phone_auth_title">註冊帳號</string>
+    <string name="phone_auth_content">驗證碼簡訊已寄至您填寫的手機號碼</string>
+    <string name="phone_auth_hint">請輸入驗證碼</string>
+    <string name="phone_auth_not_receive_text">沒收到驗證碼？</string>
+    <string name="phone_auth_send_again_text">再寄一次</string>
 </resources>
