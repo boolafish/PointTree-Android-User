@@ -11,10 +11,14 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import tw.com.pointtree.pointtreeuser.R;
+import tw.com.pointtree.pointtreeuser.activities.QRcodeActivity;
 import tw.com.pointtree.pointtreeuser.activities.SearchActivity;
 import tw.com.pointtree.pointtreeuser.activities.UserQueryActivity;
+import tw.com.pointtree.pointtreeuser.api.models.User;
 
 public class OverviewFragment extends TitledFragment {
+    private User currentUser;
+
     public OverviewFragment() {
         // Required empty public constructor
     }
@@ -64,6 +68,7 @@ public class OverviewFragment extends TitledFragment {
     public void onViewCreated(final View view, final Bundle savedInstanceState) {
         EditText searchText = (EditText) view.findViewById(R.id.search_bar);
         Button sendPointButton = (Button) view.findViewById(R.id.send_button);
+        Button redeemButton = (Button) view.findViewById(R.id.redeem_button);
 
         searchText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,5 +85,18 @@ public class OverviewFragment extends TitledFragment {
                 startActivity(intent);
             }
         });
+
+        redeemButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), QRcodeActivity.class);
+                intent.putExtra("user", currentUser);
+                startActivity(intent);
+            }
+        });
+    }
+
+    public void setCurrentUser(User currentUser) {
+        this.currentUser = currentUser;
     }
 }

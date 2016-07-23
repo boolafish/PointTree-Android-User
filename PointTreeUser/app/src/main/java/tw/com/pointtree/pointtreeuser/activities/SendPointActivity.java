@@ -23,8 +23,7 @@ public class SendPointActivity extends TitledActivity implements
         ConfirmUserFragment.OnUserConfirmedListener,
         ChooseStoreFragment.OnStoreChosenListener,
         SelectPointFragment.OnPointSelectedListener {
-    // TODO: user should be passed from UserQueryActivity
-    private User user = User.getSampleUser();
+    private User user;
     private String store;
 
     private ViewPager viewPager;
@@ -45,6 +44,13 @@ public class SendPointActivity extends TitledActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            // TODO: should handle if failed when passing user?
+            user = (User) extras.getSerializable("user");
+        }
+
         setView();
     }
 

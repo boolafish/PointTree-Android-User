@@ -25,4 +25,7 @@
     <dimen name="login_content_width">300dp</dimen>
     <dimen name="register_content_width">400dp</dimen>
     <dimen name="register_edit_text_height">40dp</dimen>
+
+    <!-- QRcode related -->
+    <dimen name="qrcode_image_size">350dp</dimen>
 </resources>

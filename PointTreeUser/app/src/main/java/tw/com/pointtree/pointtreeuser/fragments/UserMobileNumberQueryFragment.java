@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import tw.com.pointtree.pointtreeuser.R;
 import tw.com.pointtree.pointtreeuser.activities.SendPointActivity;
+import tw.com.pointtree.pointtreeuser.api.models.User;
 
 public class UserMobileNumberQueryFragment extends Fragment {
 
@@ -25,7 +26,7 @@ public class UserMobileNumberQueryFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @return A new instance of fragment ChooseFriendWithMobileNumberFragment.
+     * @return A new instance of fragment UserMobileNumberQueryFragment.
      */
     public static UserMobileNumberQueryFragment newInstance() {
         UserMobileNumberQueryFragment fragment = new UserMobileNumberQueryFragment();
@@ -50,9 +51,12 @@ public class UserMobileNumberQueryFragment extends Fragment {
             @Override
             public boolean onEditorAction(TextView textView, int action, KeyEvent keyEvent) {
                 if (action == EditorInfo.IME_ACTION_SEND) {
+                    // TODO: should call API to query user info with user mobile number
+                    User user = User.getSampleUser();
+
                     Intent intent = new Intent(getActivity(), SendPointActivity.class);
+                    intent.putExtra("user", user);
                     startActivity(intent);
-                    return true;
                 }
                 return false;
             }

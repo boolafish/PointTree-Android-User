@@ -19,6 +19,8 @@ public class User implements Serializable {
     private String mobileNumber;
     @SerializedName("img_url")
     private String imgUrl;
+    @SerializedName("user_number")
+    private int userNumber;
 
     private User() {
     }
@@ -43,6 +45,10 @@ public class User implements Serializable {
         return imgUrl;
     }
 
+    public int getUserNumber() {
+        return userNumber;
+    }
+
     public static User getSampleUser() {
         User user = new User();
         user.id = "r04944037";
@@ -50,6 +56,7 @@ public class User implements Serializable {
         user.type = "normal";
         user.mobileNumber = "+886900000000";
         user.imgUrl = "http://www.example.com/example.jpg";
+        user.userNumber = 10001;
         return user;
     }
 

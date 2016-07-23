@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import tw.com.pointtree.pointtreeuser.R;
-import tw.com.pointtree.pointtreeuser.fragments.UserIdQueryFragment;
+import tw.com.pointtree.pointtreeuser.fragments.UserNumberQueryFragment;
 import tw.com.pointtree.pointtreeuser.fragments.UserMobileNumberQueryFragment;
 import tw.com.pointtree.pointtreeuser.fragments.UserQRcodeQueryFragment;
 
@@ -39,7 +39,7 @@ public class UserQueryActivity extends TitledActivity {
     public void setUserQueryView() {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText("QRcode"));
-        tabLayout.addTab(tabLayout.newTab().setText("朋友 ID"));
+        tabLayout.addTab(tabLayout.newTab().setText("朋友編號"));
         tabLayout.addTab(tabLayout.newTab().setText("電話號碼"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
@@ -78,7 +78,7 @@ public class UserQueryActivity extends TitledActivity {
                 case 0:
                     return UserQRcodeQueryFragment.newInstance();
                 case 1:
-                    return UserIdQueryFragment.newInstance();
+                    return UserNumberQueryFragment.newInstance();
                 case 2:
                     return UserMobileNumberQueryFragment.newInstance();
                 default:

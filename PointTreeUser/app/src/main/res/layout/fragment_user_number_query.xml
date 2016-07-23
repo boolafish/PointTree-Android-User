@@ -3,16 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".fragments.UserIdQueryFragment">
+    tools:context=".fragments.UserNumberQueryFragment">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/enter_friend_id"
+        android:text="@string/enter_friend_number"
         style="@style/AppTheme.ChooseFriendMainText" />
 
     <EditText
-        android:id="@+id/user_id"
+        android:id="@+id/user_number"
         android:layout_width="match_parent"
         style="@style/AppTheme.ChooseFriendEditText" />
 </LinearLayout>
