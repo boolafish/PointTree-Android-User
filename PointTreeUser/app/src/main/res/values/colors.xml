@@ -26,6 +26,7 @@
     <color name="paleGrey">#f2f3f5</color>
     <color name="palePeach">#fde2a7</color>
     <color name="qrcodeDesc">#6e6e6e</color>
+    <color name="registerBackgroundColor">#91cfd3</color>
     <color name="seafoamBlue">#66b4d7</color>
     <color name="sickGreen">#abd036</color>
     <color name="tealish">#25ced1</color>

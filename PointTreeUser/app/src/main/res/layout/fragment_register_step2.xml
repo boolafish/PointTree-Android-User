@@ -33,7 +33,7 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="@dimen/register_edit_text_height"
+            android:layout_height="@dimen/rounded_edit_text_height"
             android:id="@+id/user_name"
             android:layout_gravity="center_horizontal"
             android:textColor="@color/editTextPlaceHolder"
@@ -48,7 +48,7 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="@dimen/register_edit_text_height"
+            android:layout_height="@dimen/rounded_edit_text_height"
             android:background="@null"
             android:inputType="date"
             android:id="@+id/user_birthday"
@@ -63,7 +63,7 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/register_edit_text_height">
+            android:layout_height="@dimen/rounded_edit_text_height">
 
             <EditText
                 android:layout_width="wrap_content"

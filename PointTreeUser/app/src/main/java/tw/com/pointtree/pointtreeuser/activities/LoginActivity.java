@@ -16,7 +16,6 @@ import tw.com.pointtree.pointtreeuser.UserPreference;
 import tw.com.pointtree.pointtreeuser.api.ClientGenerator;
 import tw.com.pointtree.pointtreeuser.api.PointTreeClient;
 import tw.com.pointtree.pointtreeuser.api.response.LoginResponse;
-import tw.com.pointtree.pointtreeuser.api.response.RegisterResponse;
 
 public class LoginActivity extends AppCompatActivity {
     private PointTreeClient apiClient = ClientGenerator.createService(PointTreeClient.class);
