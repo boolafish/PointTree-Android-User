@@ -43,7 +43,8 @@
             android:layout_marginTop="@dimen/overview_text_top_margin"
             android:layout_marginLeft="@dimen/overview_text_left_margin"
             android:textColor="@color/white"
-            android:textSize="42sp" />
+            android:textSize="42sp"
+            android:text="0" />
 
         <ImageView
             android:layout_width="@dimen/overview_tree_size"
