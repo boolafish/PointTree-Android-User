@@ -17,8 +17,10 @@ import java.util.ArrayList;
 
 import tw.com.pointtree.pointtreeuser.PointRecordListAdapter;
 import tw.com.pointtree.pointtreeuser.R;
-import tw.com.pointtree.pointtreeuser.UserPreference;
+import tw.com.pointtree.pointtreeuser.Session;
 import tw.com.pointtree.pointtreeuser.activities.LoginActivity;
+import tw.com.pointtree.pointtreeuser.api.ClientGenerator;
+import tw.com.pointtree.pointtreeuser.api.PointTreeClient;
 import tw.com.pointtree.pointtreeuser.api.models.Transaction;
 import tw.com.pointtree.pointtreeuser.api.models.User;
 
@@ -120,8 +122,8 @@ public class SettingFragment extends TitledFragment {
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UserPreference userPreference = new UserPreference(getActivity());
-                userPreference.clearPreference();
+                Session session = new Session(getActivity());
+                session.clearSession();
 
                 Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);

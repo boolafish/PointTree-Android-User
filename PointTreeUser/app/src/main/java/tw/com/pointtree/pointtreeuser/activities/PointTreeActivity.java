@@ -17,7 +17,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import tw.com.pointtree.pointtreeuser.R;
-import tw.com.pointtree.pointtreeuser.UserPreference;
+import tw.com.pointtree.pointtreeuser.Session;
 import tw.com.pointtree.pointtreeuser.api.ClientGenerator;
 import tw.com.pointtree.pointtreeuser.api.PointTreeClient;
 import tw.com.pointtree.pointtreeuser.api.models.User;
@@ -30,7 +30,7 @@ import tw.com.pointtree.pointtreeuser.views.TabLayout;
 
 public class PointTreeActivity extends AppCompatActivity {
     private User currentUser;
-    private UserPreference userPreference;
+    private Session session;
 
     private OverviewFragment overviewFragment;
     private CardCollectionFragment cardCollectionFragment;
@@ -55,7 +55,7 @@ public class PointTreeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        userPreference = new UserPreference(this);
+        session = new Session(this);
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -68,14 +68,14 @@ public class PointTreeActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
-        String userToken = userPreference.getUserToken();
+        String userToken = session.getUserToken();
         if (userToken == null) {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
             finish();
         } else {
-            String userId = userPreference.getUserId();
-            String token = userPreference.getUserToken();
+            String userId = session.getUserId();
+            String token = session.getUserToken();
             fetchUserInfo(userId, token);
         }
     }
