@@ -12,7 +12,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import tw.com.pointtree.pointtreeuser.R;
-import tw.com.pointtree.pointtreeuser.UserPreference;
+import tw.com.pointtree.pointtreeuser.Session;
 import tw.com.pointtree.pointtreeuser.api.ClientGenerator;
 import tw.com.pointtree.pointtreeuser.api.PointTreeClient;
 import tw.com.pointtree.pointtreeuser.api.response.LoginResponse;
@@ -24,9 +24,9 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         public void onResponse(Call<LoginResponse> call, final Response<LoginResponse> response) {
             if (response.isSuccessful()) {
-                UserPreference userPreference = new UserPreference(LoginActivity.this);
-                userPreference.setUserId(response.body().getUser().getId());
-                userPreference.setUserToken(response.body().getToken());
+                Session session = new Session(LoginActivity.this);
+                session.setUserId(response.body().getUser().getId());
+                session.setUserToken(response.body().getToken());
                 Intent intent = new Intent(LoginActivity.this, PointTreeActivity.class);
                 startActivity(intent);
                 finish();

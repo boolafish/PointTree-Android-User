@@ -25,6 +25,15 @@ public class User implements Serializable {
     private User() {
     }
 
+    public User(String id, String name, String type, String mobileNumber, String imgUrl, int userNumber) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.mobileNumber = mobileNumber;
+        this.imgUrl = imgUrl;
+        this.userNumber = userNumber;
+    }
+
     public String getId() {
         return id;
     }
