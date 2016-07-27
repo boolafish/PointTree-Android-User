@@ -92,9 +92,6 @@ public class PointTreeActivity extends AppCompatActivity {
                     if (settingFragment != null) {
                         settingFragment.setCurrentUser(currentUser);
                     }
-                    if (overviewFragment != null) {
-                        overviewFragment.setCurrentUser(currentUser);
-                    }
                 } else if (response.code() == 401) {
                     Intent intent = new Intent(PointTreeActivity.this, LoginActivity.class);
                     startActivity(intent);
@@ -182,7 +179,6 @@ public class PointTreeActivity extends AppCompatActivity {
             switch (position) {
                 case 0:
                     overviewFragment = (OverviewFragment) fragment;
-                    overviewFragment.setCurrentUser(currentUser);
                     break;
                 case 1:
                     cardCollectionFragment = (CardCollectionFragment) fragment;

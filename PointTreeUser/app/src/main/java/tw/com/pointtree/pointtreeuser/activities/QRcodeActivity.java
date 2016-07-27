@@ -14,6 +14,7 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 
 import tw.com.pointtree.pointtreeuser.R;
+import tw.com.pointtree.pointtreeuser.Session;
 import tw.com.pointtree.pointtreeuser.api.models.User;
 
 public class QRcodeActivity extends TitledActivity {
@@ -22,7 +23,7 @@ public class QRcodeActivity extends TitledActivity {
     private final static int WIDTH = 400;
     private final static int HEIGHT = 400;
 
-    private User user;
+    private Session session;
 
     private ImageView qrcodeImage;
 
@@ -42,10 +43,7 @@ public class QRcodeActivity extends TitledActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            user = (User) extras.getSerializable("user");
-        }
+        session = new Session(this);
 
         setQRcodeView();
     }
@@ -53,8 +51,7 @@ public class QRcodeActivity extends TitledActivity {
     private void setQRcodeView() {
         qrcodeImage = (ImageView) findViewById(R.id.qrcode_image);
 
-        // TODO: should handle if user number is zero?
-        String str = Integer.toString(user.getUserNumber());
+        String str = Integer.toString(session.getUser().getUserNumber());
 
         try {
             Bitmap bitmap = encodeAsBitmap(str);

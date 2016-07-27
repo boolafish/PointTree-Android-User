@@ -20,21 +20,19 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import tw.com.pointtree.pointtreeuser.R;
-import tw.com.pointtree.pointtreeuser.UserPreference;
+import tw.com.pointtree.pointtreeuser.Session;
 import tw.com.pointtree.pointtreeuser.activities.LoginActivity;
 import tw.com.pointtree.pointtreeuser.activities.QRcodeActivity;
 import tw.com.pointtree.pointtreeuser.activities.SearchActivity;
 import tw.com.pointtree.pointtreeuser.activities.UserQueryActivity;
 import tw.com.pointtree.pointtreeuser.api.ClientGenerator;
 import tw.com.pointtree.pointtreeuser.api.PointTreeClient;
-import tw.com.pointtree.pointtreeuser.api.models.User;
 import tw.com.pointtree.pointtreeuser.api.models.UserTree;
 import tw.com.pointtree.pointtreeuser.api.response.UpdateTreeResponse;
 import tw.com.pointtree.pointtreeuser.api.response.UserTreeResponse;
 
 public class OverviewFragment extends TitledFragment {
-    private User currentUser;
-    private UserPreference userPreference;
+    private Session session;
 
     private EditText searchText;
     private Button sendPointButton;
@@ -63,14 +61,14 @@ public class OverviewFragment extends TitledFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        userPreference = new UserPreference(getActivity());
-        String userToken = userPreference.getUserToken();
+        session = new Session(getActivity());
+        String userToken = session.getUserToken();
         if (userToken == null) {
             Intent intent = new Intent(getActivity(), LoginActivity.class);
             startActivity(intent);
         } else {
-            String userId = userPreference.getUserId();
-            String token = userPreference.getUserToken();
+            String userId = session.getUserId();
+            String token = session.getUserToken();
             // TODO: updating user tree should be done by notification in next version
             updateUserTrees(userId, token);
         }
@@ -125,14 +123,9 @@ public class OverviewFragment extends TitledFragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), QRcodeActivity.class);
-                intent.putExtra("user", currentUser);
                 startActivity(intent);
             }
         });
-    }
-
-    public void setCurrentUser(User currentUser) {
-        this.currentUser = currentUser;
     }
 
     private void updateUserTrees(final String userId, final String userToken) {
