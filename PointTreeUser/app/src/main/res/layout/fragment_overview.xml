@@ -7,6 +7,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/overview_header"
         android:background="@color/colorPrimary">
 
         <EditText
@@ -16,13 +17,52 @@
             style="@style/AppTheme.SearchBarInactive" />
     </LinearLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/overview_header"
+        android:layout_above="@+id/overview_bottom"
+        android:background="@drawable/main_page">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/score_label"
+            android:layout_marginTop="@dimen/overview_label_top_margin"
+            android:layout_marginLeft="@dimen/overview_text_left_margin"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_alignParentLeft="true"
+            android:text="@string/accumulated_score" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/score"
+            android:layout_below="@+id/score_label"
+            android:layout_marginTop="@dimen/overview_text_top_margin"
+            android:layout_marginLeft="@dimen/overview_text_left_margin"
+            android:textColor="@color/white"
+            android:textSize="42sp"
+            android:text="0" />
+
+        <ImageView
+            android:layout_width="@dimen/overview_tree_size"
+            android:layout_height="@dimen/overview_tree_size"
+            android:id="@+id/tree_type"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+
     <!-- TODO: should add different resolution image -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/overview_bottom"
         android:orientation="horizontal"
         android:gravity="center"
-        android:paddingBottom="@dimen/overview_button_paddingBottom"
+        android:paddingBottom="@dimen/overview_button_padding"
+        android:background="@color/lightTeal"
         android:layout_alignParentBottom="true" >
 
         <Button

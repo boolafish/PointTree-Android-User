@@ -9,6 +9,7 @@
     <string name="title_activity_search">SearchActivity</string>
 
     <!-- Overview related -->
+    <string name="accumulated_score">累積養分</string>
     <string name="collect_point">QRcode 集點數</string>
 
     <!-- Card detail related -->

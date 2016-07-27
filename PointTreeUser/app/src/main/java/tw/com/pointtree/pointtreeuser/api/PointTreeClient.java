@@ -13,6 +13,8 @@ import tw.com.pointtree.pointtreeuser.api.response.LoginResponse;
 import tw.com.pointtree.pointtreeuser.api.response.ProfileResponse;
 import tw.com.pointtree.pointtreeuser.api.response.RegisterResponse;
 import tw.com.pointtree.pointtreeuser.api.response.TransactionResponse;
+import tw.com.pointtree.pointtreeuser.api.response.UpdateTreeResponse;
+import tw.com.pointtree.pointtreeuser.api.response.UserTreeResponse;
 
 public interface PointTreeClient {
     @FormUrlEncoded
@@ -68,5 +70,15 @@ public interface PointTreeClient {
     Call<AuthResponse> authorizeCode(
             @Path("nonce") String nonce,
             @Field("code") int code
+    );
+
+    @GET("/api/v1/members/{user_id}/trees")
+    Call<UserTreeResponse> getUserTrees(
+            @Path("user_id") String userId
+    );
+
+    @POST("/api/v1/members/{user_id}/trees")
+    Call<UpdateTreeResponse> updateUserTrees(
+            @Path("user_id") String userId
     );
 }
