@@ -25,6 +25,7 @@ public class LoginActivity extends AppCompatActivity {
         public void onResponse(Call<LoginResponse> call, final Response<LoginResponse> response) {
             if (response.isSuccessful()) {
                 Session session = new Session(LoginActivity.this);
+                session.setUser(response.body().getUser());
                 session.setUserId(response.body().getUser().getId());
                 session.setUserToken(response.body().getToken());
                 Intent intent = new Intent(LoginActivity.this, PointTreeActivity.class);

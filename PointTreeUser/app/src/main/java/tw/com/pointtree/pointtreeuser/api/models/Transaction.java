@@ -12,12 +12,12 @@ public class Transaction {
     @SerializedName("point")
     private Point point;
     @SerializedName("sender")
-    private SimpleUserData sender;
+    private User sender;
     @SerializedName("receiver")
-    private SimpleUserData receiver;
+    private User receiver;
     @SerializedName("amount")
     private int amount;
-    @SerializedName("timestamp")
+    @SerializedName("time")
     private String timestamp;
     @SerializedName("comment")
     private String comment;
@@ -60,11 +60,11 @@ public class Transaction {
         return point;
     }
 
-    public SimpleUserData getSender() {
+    public User getSender() {
         return sender;
     }
 
-    public SimpleUserData getReceiver() {
+    public User getReceiver() {
         return receiver;
     }
 
@@ -85,8 +85,8 @@ public class Transaction {
         tx.id = "deadbeef";
         tx.type = "type";
         tx.point = Point.getSamplePoint("Point");
-        tx.sender = SimpleUserData.getSampleSimpleUserData();
-        tx.receiver = SimpleUserData.getSampleSimpleUserData();
+        tx.sender = User.getSampleUser();
+        tx.receiver = User.getSampleUser();
         tx.amount = 1;
         tx.timestamp = "0";
         tx.comment = "";

@@ -93,7 +93,7 @@ public class PointRecordView extends LinearLayout {
     private void setRecordTextView(Transaction transaction) {
         SpannableStringBuilder sb = new SpannableStringBuilder();
 
-        if (currentUser.equals(transaction.getReceiver())) {
+        if (currentUser.getId().equals(transaction.getReceiver().getId())) {
             if (transaction.getSender().getType().equals(User.TYPE_STORE)) {
                 sb = getColoredClickableSb(R.color.tealish, null, transaction.getPoint().getName());
             } else if (transaction.getSender().getType().equals(User.TYPE_NORMAL)) {
@@ -104,7 +104,7 @@ public class PointRecordView extends LinearLayout {
                 sb.append(getColoredClickableSb(R.color.tealish, null, transaction.getPoint().getName()));
                 sb.append(" 的點數");
             }
-        } else if (currentUser.equals(transaction.getSender())) {
+        } else if (currentUser.getId().equals(transaction.getSender().getId())) {
             if (transaction.getReceiver().getType().equals(User.TYPE_STORE)) {
                 sb.append("兌換 ");
                 sb.append(getColoredClickableSb(R.color.warmPink, null, transaction.getPoint().getName()));
@@ -132,7 +132,7 @@ public class PointRecordView extends LinearLayout {
         return sb;
     }
 
-    private ClickableSpan getUserClickableSpan(final Transaction.SimpleUserData user) {
+    private ClickableSpan getUserClickableSpan(final User user) {
         ClickableSpan cs = new ClickableSpan() {
             @Override
             public void onClick(View view) {

@@ -10,6 +10,7 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
 
 import tw.com.pointtree.pointtreeuser.api.models.Transaction;
 import tw.com.pointtree.pointtreeuser.api.models.User;
@@ -20,7 +21,7 @@ public class PointRecordListAdapter extends BaseAdapter {
     private Context context;
     private User currentUser;
 
-    public PointRecordListAdapter(Context context, ArrayList<Transaction> transactions, User currentUser) {
+    public PointRecordListAdapter(Context context, List<Transaction> transactions, User currentUser) {
         if (transactions != null) {
             this.transactions = new ArrayList<>(transactions);
             // sort from new to old
