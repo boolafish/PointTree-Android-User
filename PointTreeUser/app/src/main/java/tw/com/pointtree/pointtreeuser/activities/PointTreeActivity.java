@@ -144,6 +144,8 @@ public class PointTreeActivity extends AppCompatActivity {
     public interface ImageTabAdapter {
         @DrawableRes
         int getPageImage(int position);
+        @DrawableRes
+        int getSelectedPageImage(int position);
     }
 
     /**
@@ -205,15 +207,32 @@ public class PointTreeActivity extends AppCompatActivity {
         public int getPageImage(int position) {
             switch (position) {
                 case 0:
-                    return R.mipmap.ic_launcher;
+                    return R.drawable.tab_home;
                 case 1:
-                    return R.mipmap.ic_launcher;
+                    return R.drawable.tab_card;
                 case 2:
-                    return R.mipmap.ic_launcher;
+                    return R.drawable.tab_map;
                 case 3:
-                    return R.mipmap.ic_launcher;
+                    return R.drawable.tab_dex;
                 case 4:
-                    return R.mipmap.ic_launcher;
+                    return R.drawable.tab_setting;
+            }
+            return 0;
+        }
+
+        @Override
+        public int getSelectedPageImage(int position) {
+            switch (position) {
+                case 0:
+                    return R.drawable.tab_home_selected;
+                case 1:
+                    return R.drawable.tab_card_selected;
+                case 2:
+                    return R.drawable.tab_map_selected;
+                case 3:
+                    return R.drawable.tab_dex_selected;
+                case 4:
+                    return R.drawable.tab_setting_selected;
             }
             return 0;
         }
