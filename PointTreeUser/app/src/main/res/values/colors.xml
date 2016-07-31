@@ -30,6 +30,8 @@
     <color name="seafoamBlue">#66b4d7</color>
     <color name="sickGreen">#abd036</color>
     <color name="tealish">#25ced1</color>
+    <color name="treeDexBorder">#3ad3d6</color>
+    <color name="treeName">#78e1e3</color>
     <color name="warmPink">#f7567c</color>
     <color name="white">#ffffff</color>
 </resources>

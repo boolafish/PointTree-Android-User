@@ -25,6 +25,7 @@ import tw.com.pointtree.pointtreeuser.api.response.ProfileResponse;
 import tw.com.pointtree.pointtreeuser.fragments.CardCollectionFragment;
 import tw.com.pointtree.pointtreeuser.fragments.OverviewFragment;
 import tw.com.pointtree.pointtreeuser.fragments.SettingFragment;
+import tw.com.pointtree.pointtreeuser.fragments.TreeDexFragment;
 import tw.com.pointtree.pointtreeuser.views.NonSwipeViewPager;
 import tw.com.pointtree.pointtreeuser.views.TabLayout;
 
@@ -164,6 +165,8 @@ public class PointTreeActivity extends AppCompatActivity {
                     return OverviewFragment.newInstance();
                 case 1:
                     return CardCollectionFragment.newInstance();
+                case 3:
+                    return TreeDexFragment.newInstance();
                 case 4:
                     return SettingFragment.newInstance();
             }

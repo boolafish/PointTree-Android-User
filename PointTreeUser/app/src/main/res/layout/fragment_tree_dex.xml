@@ -1,0 +1,21 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="tw.com.pointtree.pointtreeuser.fragments.TreeDexFragment">
+
+    <!-- TODO: padding makes grid item border but it would be a problem if grid item number is odd -->
+    <GridView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/grid_view"
+        android:layout_margin="4dp"
+        android:numColumns="2"
+        android:horizontalSpacing="1dp"
+        android:verticalSpacing="1dp"
+        android:padding="2dp"
+        android:clipToPadding="false"
+        android:background="@color/treeDexBorder" />
+
+</LinearLayout>
