@@ -12,21 +12,40 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ScrollView;
+import android.widget.TextView;
 
-import java.util.ArrayList;
+import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import tw.com.pointtree.pointtreeuser.PointRecordListAdapter;
 import tw.com.pointtree.pointtreeuser.R;
 import tw.com.pointtree.pointtreeuser.Session;
 import tw.com.pointtree.pointtreeuser.activities.LoginActivity;
-import tw.com.pointtree.pointtreeuser.api.ClientGenerator;
 import tw.com.pointtree.pointtreeuser.api.PointTreeClient;
 import tw.com.pointtree.pointtreeuser.api.models.Transaction;
-import tw.com.pointtree.pointtreeuser.api.models.User;
+import tw.com.pointtree.pointtreeuser.api.response.TransactionResponse;
 
 public class SettingFragment extends TitledFragment {
-    private ArrayList<Transaction> transactions;
-    private User currentUser;
+    private ListView pointRecordListView;
+    private Session session;
+
+    private Callback<TransactionResponse> txCallback = new Callback<TransactionResponse>() {
+        @Override
+        public void onResponse(Call<TransactionResponse> call, Response<TransactionResponse> response) {
+            if (response.isSuccessful()) {
+                List<Transaction> transactions = response.body().getTransactions();
+                pointRecordListView.setAdapter(
+                        new PointRecordListAdapter(getContext(), transactions, session.getUser()));
+            }
+        }
+
+        @Override
+        public void onFailure(Call<TransactionResponse> call, Throwable t) {
+
+        }
+    };
 
     public SettingFragment() {
         // Required empty public constructor
@@ -68,26 +87,22 @@ public class SettingFragment extends TitledFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
+        session = new Session(context);
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        ListView pointRecordListView = (ListView) view.findViewById(R.id.pointRecordListVIew);
+        pointRecordListView = (ListView) view.findViewById(R.id.pointRecordListVIew);
         setButtonControl(view);
 
-        // TODO use real transactions
-        transactions = Transaction.getSampleTransactions();
-        pointRecordListView.setAdapter(
-                new PointRecordListAdapter(getContext(), transactions, this.currentUser));
-    }
+        PointTreeClient client = session.getClient();
+        client.getTransactions(session.getUserId()).enqueue(txCallback);
 
-    public void setCurrentUser(User currentUser) {
-        this.currentUser = currentUser;
+        TextView nameTextView = (TextView) view.findViewById(R.id.nameTextView);
+        nameTextView.setText(session.getUser().getName());
+
+        TextView idTextView = (TextView) view.findViewById(R.id.idTextView);
+        idTextView.setText((session.getUser().getUserNumber()));
     }
 
     private void setButtonControl(View view) {

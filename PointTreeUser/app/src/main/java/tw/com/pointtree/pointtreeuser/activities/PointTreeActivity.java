@@ -13,15 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import tw.com.pointtree.pointtreeuser.R;
 import tw.com.pointtree.pointtreeuser.Session;
-import tw.com.pointtree.pointtreeuser.api.ClientGenerator;
-import tw.com.pointtree.pointtreeuser.api.PointTreeClient;
-import tw.com.pointtree.pointtreeuser.api.models.User;
-import tw.com.pointtree.pointtreeuser.api.response.ProfileResponse;
 import tw.com.pointtree.pointtreeuser.fragments.CardCollectionFragment;
 import tw.com.pointtree.pointtreeuser.fragments.OverviewFragment;
 import tw.com.pointtree.pointtreeuser.fragments.SettingFragment;
@@ -30,13 +23,6 @@ import tw.com.pointtree.pointtreeuser.views.NonSwipeViewPager;
 import tw.com.pointtree.pointtreeuser.views.TabLayout;
 
 public class PointTreeActivity extends AppCompatActivity {
-    private User currentUser;
-    private Session session;
-
-    private OverviewFragment overviewFragment;
-    private CardCollectionFragment cardCollectionFragment;
-    private SettingFragment settingFragment;
-
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -56,7 +42,6 @@ public class PointTreeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        session = new Session(this);
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -69,42 +54,13 @@ public class PointTreeActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
+        Session session = new Session(this);
         String userToken = session.getUserToken();
         if (userToken == null) {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
             finish();
-        } else {
-            String userId = session.getUserId();
-            String token = session.getUserToken();
-            fetchUserInfo(userId, token);
         }
-    }
-
-    private void fetchUserInfo(String userId, String userToken) {
-        PointTreeClient client =
-                ClientGenerator.createAuthorizedService(PointTreeClient.class, userToken);
-        client.getProfile(userId).enqueue(new Callback<ProfileResponse>() {
-            @Override
-            public void onResponse(Call<ProfileResponse> call, Response<ProfileResponse> response) {
-                if (response.code() == 200) {
-                    currentUser = response.body().getUser();
-                    // TODO: How to notify all fragment that user info is fetched?
-                    if (settingFragment != null) {
-                        settingFragment.setCurrentUser(currentUser);
-                    }
-                } else if (response.code() == 401) {
-                    Intent intent = new Intent(PointTreeActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ProfileResponse> call, Throwable t) {
-                // TODO:
-            }
-        });
     }
 
     /**
@@ -171,27 +127,6 @@ public class PointTreeActivity extends AppCompatActivity {
                     return SettingFragment.newInstance();
             }
             return PlaceholderFragment.newInstance(position + 1);
-        }
-
-        /**
-         * Use instantiateItem to hook fragments to this activity.
-         */
-        @Override
-        public Object instantiateItem(ViewGroup container, int position) {
-            Fragment fragment = (Fragment) super.instantiateItem(container, position);
-            switch (position) {
-                case 0:
-                    overviewFragment = (OverviewFragment) fragment;
-                    break;
-                case 1:
-                    cardCollectionFragment = (CardCollectionFragment) fragment;
-                    break;
-                case 4:
-                    settingFragment = (SettingFragment) fragment;
-                    settingFragment.setCurrentUser(currentUser);
-                    break;
-            }
-            return fragment;
         }
 
         @Override

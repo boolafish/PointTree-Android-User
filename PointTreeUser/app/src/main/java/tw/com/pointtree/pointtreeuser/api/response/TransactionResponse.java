@@ -9,4 +9,8 @@ import tw.com.pointtree.pointtreeuser.api.models.Transaction;
 public class TransactionResponse {
     @SerializedName("data")
     private List<Transaction> transactions;
+
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
 }
