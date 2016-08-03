@@ -33,12 +33,10 @@ public class TabLayout extends android.support.design.widget.TabLayout {
         // Change icon when selected.
         if (viewPager != null && viewPager.getAdapter() != null) {
             final SectionsPagerAdapter adapter = (SectionsPagerAdapter) viewPager.getAdapter();
-            // TODO: setOnTabSelectedListener is deprecated.
-            setOnTabSelectedListener(new OnTabSelectedListener() {
+            addOnTabSelectedListener(new OnTabSelectedListener() {
                 @Override
                 public void onTabSelected(Tab tab) {
                     tab.setIcon(adapter.getSelectedPageImage(tab.getPosition()));
-                    viewPager.setCurrentItem(tab.getPosition());
                 }
 
                 @Override

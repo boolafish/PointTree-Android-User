@@ -159,7 +159,6 @@ public class OverviewFragment extends TitledFragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), UserQueryActivity.class);
                 startActivity(intent);
-                getActivity().finish();
             }
         });
 
@@ -168,7 +167,6 @@ public class OverviewFragment extends TitledFragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), QRcodeActivity.class);
                 startActivity(intent);
-                getActivity().finish();
             }
         });
 

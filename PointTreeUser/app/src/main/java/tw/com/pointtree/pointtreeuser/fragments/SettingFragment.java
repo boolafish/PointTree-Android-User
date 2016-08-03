@@ -102,7 +102,7 @@ public class SettingFragment extends TitledFragment {
         nameTextView.setText(session.getUser().getName());
 
         TextView idTextView = (TextView) view.findViewById(R.id.idTextView);
-        idTextView.setText((session.getUser().getUserNumber()));
+        idTextView.setText(String.format("%d", session.getUser().getUserNumber()));
     }
 
     private void setButtonControl(View view) {
