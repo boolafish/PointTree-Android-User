@@ -6,7 +6,6 @@ import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -28,20 +27,29 @@ public class ClientGenerator {
                     .baseUrl(apiBaseUrl)
                     .addConverterFactory(GsonConverterFactory.create());
 
+    public static String getApiBaseUrlString() {
+        return ClientGenerator.API_HTTP_SCHEME + "://" + ClientGenerator.API_BASE_URL;
+    }
+
+    public static OkHttpClient createAuthorizedOkHttpClient(final String token) {
+        OkHttpClient client = httpClientBuilder.addInterceptor(new Interceptor() {
+            @Override
+            public okhttp3.Response intercept(Chain chain) throws IOException {
+                Request request = chain.request().newBuilder()
+                        .header("Authorization", "Token ".concat(token)).build();
+                return chain.proceed(request);
+            }
+        }).build();
+        return client;
+    }
+
     public static <S> S createService(Class<S> serviceClass) {
         Retrofit retrofit = builder.client(httpClientBuilder.build()).build();
         return retrofit.create(serviceClass);
     }
 
     public static <S> S createAuthorizedService(Class<S> serviceClass, final String token) {
-        OkHttpClient httpClient = httpClientBuilder.addInterceptor(new Interceptor() {
-            @Override
-            public Response intercept(Chain chain) throws IOException {
-                Request request = chain.request().newBuilder()
-                        .header("Authorization", "Token ".concat(token)).build();
-                return chain.proceed(request);
-            }
-        }).build();
+        OkHttpClient httpClient = createAuthorizedOkHttpClient(token);
         Retrofit retrofit = builder.client(httpClient).build();
         return retrofit.create(serviceClass);
     }

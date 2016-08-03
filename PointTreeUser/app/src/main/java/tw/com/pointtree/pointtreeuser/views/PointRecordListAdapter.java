@@ -1,4 +1,4 @@
-package tw.com.pointtree.pointtreeuser;
+package tw.com.pointtree.pointtreeuser.views;
 
 import android.content.Context;
 import android.view.View;

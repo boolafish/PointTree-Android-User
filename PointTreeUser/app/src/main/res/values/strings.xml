@@ -56,6 +56,8 @@
     <string name="point_record">點數紀錄</string>
     <string name="privacy_rule">隱私權法規</string>
     <string name="problem_report">問題回報</string>
+    <string name="user_name_setting">設定用戶名稱</string>
+    <string name="insert_new_user_name">請輸入新的用戶名稱</string>
 
     <!-- Login, Register activities -->
     <string name="forget_password_button_text">忘記密碼</string>

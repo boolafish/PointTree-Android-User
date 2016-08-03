@@ -1,6 +1,8 @@
 package tw.com.pointtree.pointtreeuser.api;
 
+import okhttp3.RequestBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -43,8 +45,13 @@ public interface PointTreeClient {
     @POST("/api/v1/members/{user_id}/profile")
     Call<ProfileResponse> updateProfile(
             @Path("user_id") String userId,
-            @Field("name") String name,
-            @Field("image_url") String imgUrl
+            @Field("name") String name
+    );
+
+    @POST("/api/v1/members/{user_id}/profile")
+    Call<ProfileResponse> updateProfile(
+            @Path("user_id") String userId,
+            @Body RequestBody image
     );
 
     @GET("/api/v1/members/{user_id}/balance")

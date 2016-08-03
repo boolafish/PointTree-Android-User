@@ -20,11 +20,11 @@
             <ImageView
                 android:layout_width="95dp"
                 android:layout_height="95dp"
-                android:id="@+id/imageView"
+                android:id="@+id/userImageView"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/abc_cab_background_top_material"
                 android:cropToPadding="false"
-                android:layout_marginTop="22dp" />
+                android:layout_marginTop="22dp"
+                android:background="@color/white" />
 
             <ImageView
                 android:layout_width="140dp"
@@ -33,7 +33,8 @@
                 android:minHeight="120dp"
                 android:minWidth="120dp"
                 android:cropToPadding="false"
-                android:src="@drawable/image_cover_circle" />
+                android:src="@drawable/image_cover_circle"
+                android:id="@+id/userImageClickView" />
 
         </FrameLayout>
 
@@ -55,7 +56,7 @@
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/imageButton"
+                android:id="@+id/changeNameButton"
                 android:background="@drawable/edit_icon"
                 android:layout_marginStart="3dp" />
         </LinearLayout>
